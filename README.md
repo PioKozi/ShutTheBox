@@ -4,6 +4,8 @@ Game of Shut the Box, using PyQt5
 I'm a GCSE student, so feel free to ignore this as it is not likely to be particularly worthwhile: just a small project.  
 That being said, feel free to comment, though this probably won't be updated much.  
 
+That and the dice in this game look pretty bad, so if you have your own jpgs or pngs just change the ones in the DiceFaces folder.
+
 # For use
 You will need:  
 * Python 3 installed, preferably 3.7. If it is not installed, follow these steps for Linux
