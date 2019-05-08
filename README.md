@@ -12,8 +12,11 @@ You will need:
 > sudo apt-get install python3.7
 
 * PyQt5 installed. if it is not installed, follow these steps for Linux
-> sudo apt-get install python3-pip
+> sudo apt-get install python3-pip  
 > pip3 install PyQt5
+
+To run, go to directory and run:  
+> python GameMain.py
 
 # Rules
 * First you roll the dice
