@@ -14,6 +14,7 @@ class Game(QtWidgets.QWidget):
         super(Game, self).__init__()
         uic.loadUi("GameMain.ui", self)
         self.rollConfirm.clicked.connect(self.rollDice)
+        self.restartButton.clicked.connect(self.restart)
         self.switch1.clicked.connect(lambda: self.toggleSwitch(self.switch1, 1))
         self.switch2.clicked.connect(lambda: self.toggleSwitch(self.switch2, 2))
         self.switch3.clicked.connect(lambda: self.toggleSwitch(self.switch3, 3))
@@ -24,6 +25,25 @@ class Game(QtWidgets.QWidget):
         self.switch8.clicked.connect(lambda: self.toggleSwitch(self.switch8, 8))
         self.switch9.clicked.connect(lambda: self.toggleSwitch(self.switch9, 9))
 
+    def restart(self):
+        self.switchStates = {1:False, 2:False, 3:False, 4:False, 5:False, 6:False, 7:False, 8:False, 9:False}
+        self.switchUpdates = {1:False, 2:False, 3:False, 4:False, 5:False, 6:False, 7:False, 8:False, 9:False}
+        self.firstPress = True
+        self.d1 = 0
+        self.d2 = 0
+        self.die1Label.setPixmap(QtGui.QPixmap())
+        self.die2Label.setPixmap(QtGui.QPixmap())
+        self.switch1.setStyleSheet("background-color:rgb(138, 226, 52)")
+        self.switch2.setStyleSheet("background-color:rgb(138, 226, 52)")
+        self.switch3.setStyleSheet("background-color:rgb(138, 226, 52)")
+        self.switch4.setStyleSheet("background-color:rgb(138, 226, 52)")
+        self.switch5.setStyleSheet("background-color:rgb(138, 226, 52)")
+        self.switch6.setStyleSheet("background-color:rgb(138, 226, 52)")
+        self.switch7.setStyleSheet("background-color:rgb(138, 226, 52)")
+        self.switch8.setStyleSheet("background-color:rgb(138, 226, 52)")
+        self.switch9.setStyleSheet("background-color:rgb(138, 226, 52)")
+        self.disableAll()
+
     def toggleSwitch(self, switch, switchNum):
         if self.switchUpdates[switchNum] == False:
             switch.setStyleSheet("background-color:rgb(252, 233, 79)")
@@ -33,6 +53,9 @@ class Game(QtWidgets.QWidget):
             self.switchUpdates[switchNum] = False
 
     def rollDice(self):
+        if all(value == True for value in self.switchUpdates.values()):
+            self.rollConfirm.setText("YOU WIN!")
+            self.setStyleSheet("background-color:rgb(196, 160, 0);")
         if self.switchUpdates != self.switchStates or self.firstPress:#and as long as the two don't look the same, this can run
             self.switchStates.update(self.switchUpdates)
             self.firstPress = False
