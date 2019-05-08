@@ -33,6 +33,8 @@ class Game(QtWidgets.QWidget):
         self.d2 = 0
         self.die1Label.setPixmap(QtGui.QPixmap())
         self.die2Label.setPixmap(QtGui.QPixmap())
+        self.rollConfirm.setText("Confirm and Roll")
+        self.setStyleSheet("")
         self.switch1.setStyleSheet("background-color:rgb(138, 226, 52)")
         self.switch2.setStyleSheet("background-color:rgb(138, 226, 52)")
         self.switch3.setStyleSheet("background-color:rgb(138, 226, 52)")
@@ -51,11 +53,11 @@ class Game(QtWidgets.QWidget):
         else:
             switch.setStyleSheet("background-color:rgb(138, 226, 52);")
             self.switchUpdates[switchNum] = False
-
-    def rollDice(self):
         if all(value == True for value in self.switchUpdates.values()):
             self.rollConfirm.setText("YOU WIN!")
             self.setStyleSheet("background-color:rgb(196, 160, 0);")
+
+    def rollDice(self):
         if self.switchUpdates != self.switchStates or self.firstPress:#and as long as the two don't look the same, this can run
             self.switchStates.update(self.switchUpdates)
             self.firstPress = False
@@ -78,7 +80,7 @@ class Game(QtWidgets.QWidget):
 
     def checkLegalMoves(self):
         self.disableAll()
-        if (self.d1 == 1 or self.d2 == 1 or self.d1 + self.d2 == 1) and self.switchStates[1] == False:
+        if (self.d1 == 1 or self.d2 == 1 or self.d1 + self.d2 == 1) and self.switchUpdates[1] == False:
             self.switch1.setEnabled(True)
         if (self.d1 == 2 or self.d2 == 2 or self.d1 + self.d2 == 2) and self.switchStates[2] == False:
             self.switch2.setEnabled(True)

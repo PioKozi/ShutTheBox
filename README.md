@@ -23,6 +23,8 @@ To run, go to directory and run:
 * Then you flip at least one switch to be down
   * The switch/es has/ve to correspond to one of the dice, or both added together
 * If all the switches are down, you win
+  * This is made quite obvious
 * If there are no moves that can be made in the turn, you lose
+* If you can no longer play, either due to win or loss, or just don't like the way your switches have panned out, you can restart the game
 
 ***Feel free to edit the code in any clones that you download if you so wish***
