@@ -35,15 +35,9 @@ class Game(QtWidgets.QWidget):
         self.die2Label.setPixmap(QtGui.QPixmap())
         self.rollConfirm.setText("Confirm and Roll")
         self.setStyleSheet("")
-        self.switch1.setStyleSheet("background-color:rgb(138, 226, 52)")
-        self.switch2.setStyleSheet("background-color:rgb(138, 226, 52)")
-        self.switch3.setStyleSheet("background-color:rgb(138, 226, 52)")
-        self.switch4.setStyleSheet("background-color:rgb(138, 226, 52)")
-        self.switch5.setStyleSheet("background-color:rgb(138, 226, 52)")
-        self.switch6.setStyleSheet("background-color:rgb(138, 226, 52)")
-        self.switch7.setStyleSheet("background-color:rgb(138, 226, 52)")
-        self.switch8.setStyleSheet("background-color:rgb(138, 226, 52)")
-        self.switch9.setStyleSheet("background-color:rgb(138, 226, 52)")
+        switchArray = [self.switch1, self.switch2, self.switch3, self.switch4, self.switch5, self.switch6, self.switch7, self.switch8, self.switch9]
+        for switch in switchArray:
+            switch.setStyleSheet("background-color:rgb(138, 226, 52)")
         self.disableAll()
 
     def toggleSwitch(self, switch, switchNum):
@@ -68,36 +62,18 @@ class Game(QtWidgets.QWidget):
             self.checkLegalMoves()
 
     def disableAll(self):
-        self.switch1.setEnabled(False)
-        self.switch2.setEnabled(False)
-        self.switch3.setEnabled(False)
-        self.switch4.setEnabled(False)
-        self.switch5.setEnabled(False)
-        self.switch6.setEnabled(False)
-        self.switch7.setEnabled(False)
-        self.switch8.setEnabled(False)
-        self.switch9.setEnabled(False)
+        switchArray = [self.switch1, self.switch2, self.switch3, self.switch4, self.switch5, self.switch6, self.switch7, self.switch8, self.switch9]
+        for switch in switchArray:
+            switch.setEnabled(False)
 
     def checkLegalMoves(self):
         self.disableAll()
-        if (self.d1 == 1 or self.d2 == 1 or self.d1 + self.d2 == 1) and self.switchUpdates[1] == False:
-            self.switch1.setEnabled(True)
-        if (self.d1 == 2 or self.d2 == 2 or self.d1 + self.d2 == 2) and self.switchStates[2] == False:
-            self.switch2.setEnabled(True)
-        if (self.d1 == 3 or self.d2 == 3 or self.d1 + self.d2 == 3) and self.switchStates[3] == False:
-            self.switch3.setEnabled(True)
-        if (self.d1 == 4 or self.d2 == 4 or self.d1 + self.d2 == 4) and self.switchStates[4] == False:
-            self.switch4.setEnabled(True)
-        if (self.d1 == 5 or self.d2 == 5 or self.d1 + self.d2 == 5) and self.switchStates[5] == False:
-            self.switch5.setEnabled(True)
-        if (self.d1 == 6 or self.d2 == 6 or self.d1 + self.d2 == 6) and self.switchStates[6] == False:
-            self.switch6.setEnabled(True)
-        if (self.d1 == 7 or self.d2 == 7 or self.d1 + self.d2 == 7) and self.switchStates[7] == False:
-            self.switch7.setEnabled(True)
-        if (self.d1 == 8 or self.d2 == 8 or self.d1 + self.d2 == 8) and self.switchStates[8] == False:
-            self.switch8.setEnabled(True)
-        if (self.d1 == 9 or self.d2 == 9 or self.d1 + self.d2 == 9) and self.switchStates[9] == False:
-            self.switch9.setEnabled(True)
+        ##if (self.d1 == 1 or self.d2 == 1 or self.d1 + self.d2 == 1) and self.switchUpdates[1] == False:
+        ##    self.switch1.setEnabled(True)
+        switchArray = [self.switch1, self.switch2, self.switch3, self.switch4, self.switch5, self.switch6, self.switch7, self.switch8, self.switch9]
+        for switch in switchArray:
+            if(self.d1 == switchArray.index(switch)+1 or self.d2 == switchArray.index(switch)+1 or self.d1 + self.d2 == switchArray.index(switch)+1) and self.switchUpdates[switchArray.index(switch)+1] == False:
+                switch.setEnabled(True)
 
 
 def main():
