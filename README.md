@@ -6,6 +6,10 @@ That being said, feel free to comment, though this probably won't be updated muc
 
 That and the dice in this game look pretty bad, so if you have your own jpgs or pngs just change the ones in the DiceFaces folder.
 
+# History
+This game was invented most likely in the Middle Ages, with a variety of origins. One of the earliest of these origins was 12th century Normandy (Northern France).  
+In the modern age, some people play the game with several boxes, all with 7-9 such switches, and several pairs of dice, making the game more difficult.
+
 # For use
 You will need:  
 * Python 3 installed, preferably 3.7. If it is not installed, follow these steps for Linux
